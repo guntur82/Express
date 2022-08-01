@@ -1,6 +1,8 @@
-const lectureRoute = require("express").Router();
+const lecturerRoute = require("express").Router();
+const LecturerController = require("../controllers/LecturerController");
 
-lectureRoute.get("/", (req, res) => {
-  res.send("Lecturere page");
-});
-module.exports = lectureRoute;
+lecturerRoute.get("/", LecturerController.getLecturer);
+lecturerRoute.get("/create", LecturerController.create);
+lecturerRoute.get("/information/:Id", LecturerController.getInformation);
+
+module.exports = lecturerRoute;

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Guntur",
+    "subject": "mtk",
+    "age": 20,
+    "city": "bandung"
+  },
+  {
+    "id": 2,
+    "name": "Hendri",
+    "subject": "alien",
+    "age": 22,
+    "city": "garut"
+  },
+  {
+    "id": 3,
+    "name": "alfa",
+    "subject": "inggris",
+    "age": 22,
+    "city": "bekasi"
+  }
+]

@@ -4,13 +4,10 @@ route.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-const lectureRoutes = require("./lecture");
-route.use("/lecturers", lectureRoutes);
-// lectureRoute.get("/lecturers", (req, res) => {
-//     res.send("Lecturers page");
-//   });
+const lecturerRoutes = require("./lecture");
+route.use("/lecturers", lecturerRoutes);
 
-//   route.get("/student", (req, res) => {
-//     res.send("Students page");
-//   });
+const studentRoutes = require("./student");
+route.use("/students", studentRoutes);
+
 module.exports = route;
