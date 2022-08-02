@@ -1,16 +1,16 @@
 [
-  {
-    "id": 1,
-    "name": "Guntur",
-    "major": "mtk",
-    "semester": 1,
-    "city": "bandung"
-  },
-  {
-    "id": 2,
-    "name": "Hendri",
-    "major": "ipa",
-    "semester": 1,
-    "city": "garut"
-  }
+   {
+      "id": 1,
+      "name": "Guntur",
+      "major": "mtk",
+      "semester": 1,
+      "city": "bandung"
+   },
+   {
+      "id": 2,
+      "name": "rangga",
+      "major": "ips",
+      "semester": 1,
+      "city": "ciumbeuleuwit"
+   }
 ]

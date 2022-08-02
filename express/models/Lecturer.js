@@ -56,6 +56,79 @@ class Lecturer {
         });
     });
   }
+
+  static create(lecturer) {
+    return new Promise((resolve, reject) => {
+      this.getAllLecturer()
+        .then((result) => {
+          let lecturers = result;
+          const id = lecturers[lecturers.length - 1].id + 1;
+          // lecturer ini diambil dari parameter yang ada di create,sedangkan lecturers pake "s" itu parameter buat nambung json utama
+          const { name, subject, age, city } = lecturer;
+          lecturers.push(new Lecturer(id, name, subject, age, city));
+          this.save(lecturers);
+          resolve(`Lecturer has been created!`);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  static delete(id) {
+    return new Promise((resolve, reject) => {
+      this.getAllLecturer()
+        .then((result) => {
+          let lecturers = result;
+          lecturers = lecturers.filter((lecturer) => lecturer.id !== id);
+          this.save(lecturers);
+          resolve(`Lecturer with id ${id} has been deleted!`);
+        })
+        .catch((err) => reject(err));
+    });
+  }
+
+  static update(lecturer_id, lecturer) {
+    return new Promise((resolve, reject) => {
+      this.getAllLecturer()
+        .then((result) => {
+          let lecturers = result;
+          const { name, subject, age, city } = lecturer;
+          lecturers = lecturers.map((lecturer) => {
+            if (lecturer.id === lecturer_id) {
+              lecturer.name = name;
+              lecturer.subject = subject;
+              lecturer.age = age;
+              lecturer.city = city;
+            }
+            return lecturer;
+          });
+          this.save(lecturers);
+          resolve(`Lecturer ${lecturer_id} has been saved!`);
+        })
+        .catch((err) => reject(err));
+    });
+  }
+
+  static search(searchQuery) {
+    return new Promise((resolve, reject) => {
+      this.getAllLecturer()
+        .then((result) => {
+          let lecturers = result;
+          // bisa banyak kondisi untuk filter
+          const { name, age } = searchQuery;
+          let findLecturers = lecturers.filter(
+            (lecturer) => lecturer.name === name && lecturer.age === +age
+          );
+          resolve(findLecturers);
+        })
+        .catch((err) => reject(err));
+    });
+  }
+
+  static save(lecturers) {
+    fs.writeFileSync('./lecturers.json', JSON.stringify(lecturers, null, 3));
+  }
 }
 
 module.exports = Lecturer;

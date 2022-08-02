@@ -12,11 +12,18 @@ class LecturerController {
   }
 
   static create(req, res) {
-    res.send('Create Lecturer page');
+    // console.log(req.body);
+    Lecturer.create(req.body)
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   }
 
   static getInformation(req, res) {
-    const id = +req.params.Id;
+    const id = +req.params.id;
     Lecturer.getInformation(id)
       .then((result) => {
         res.send(result);
@@ -27,6 +34,41 @@ class LecturerController {
     // isNaN(id) === false
     //   ? res.send(`Information page id number ${id}`)
     //   : res.send(`Id must be number`);
+  }
+
+  static delete(req, res) {
+    const id = +req.params.id;
+
+    Lecturer.delete(id)
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
+  static update(req, res) {
+    const id = +req.params.id;
+
+    Lecturer.update(id, req.body)
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }
+
+  static search(req, res) {
+    // console.log(req.query);
+    Lecturer.search(req.query)
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   }
 }
 
