@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecturers and Students</title>
+    <style>
+      table {
+        width: 600px;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: center;
+      }
+      a {
+        text-decoration: none;
+        padding: 4px 8px;
+        color: white;
+        background-color: maroon;
+        border: none;
+        border-radius: 16px;
+      }
+      a:hover {
+        color: maroon;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 16px;
+      }
+      a.information-user {
+        border: none;
+        background-color: white;
+        text-decoration: none;
+        font-weight: bold;
+        color: darkgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Home Page</h1>
+    <a href="/lecturers">Lecturers</a>
+    <a href="/students">Students</a>
+    <hr />
+    <h3>Lecturers Page</h3>
+    <a href="/lecturers/create">+ Add Lecturer</a>
+    <div>
+      <table border="1" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Age</th>
+            <th>City</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% lecturers.forEach(lecturer => { %>
+          <tr>
+            <td><%= lecturer.id %></td>
+            <td>
+              <a
+                class="information-user"
+                href="/lecturers/information/<%= lecturer.id%>"
+              >
+                <%= lecturer.name %>
+              </a>
+            </td>
+            <td><%= lecturer.subject %></td>
+            <td><%= lecturer.age %></td>
+            <td><%= lecturer.city %></td>
+            <td>
+              <a href="/lecturers/update/<%= lecturer.id %> ">Edit</a>
+              <a href="/lecturers/delete/<%= lecturer.id %>">Delete</a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <%# sample.forEach(lecturer => { %> <%#= lecturer.id %> <%#= lecturer.name
+      %> <%#= lecturer.subject %> <%#= lecturer.age %> <%#= lecturer.city %> <%#
+      }) %>
+    </div>
+  </body>
+</html>

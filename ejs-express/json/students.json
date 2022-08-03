@@ -1,0 +1,16 @@
+[
+   {
+      "id": 1,
+      "name": "Guntur",
+      "major": "mtk",
+      "semester": 1,
+      "city": "bandung"
+   },
+   {
+      "id": 2,
+      "name": "rangga",
+      "major": "ips",
+      "semester": 1,
+      "city": "ciumbeuleuwit"
+   }
+]
